@@ -58,6 +58,9 @@ def gather():
         elif choice == '5':
             resp.say("Ooh... Cozmo's special ability.")
             turn_right.value = 5
+        elif choice == '6':
+            resp.say("Prepare to be cutened.")
+            turn_right.value = 6
             
         else:
             # If the caller didn't choose 1 or 2, apologize and ask them again
