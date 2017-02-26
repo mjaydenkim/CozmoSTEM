@@ -11,6 +11,7 @@ app = Flask(__name__)
 
 
 
+
 @app.route("/voice", methods=['GET', 'POST'])
 def voice():
     """Respond to incoming phone calls with a menu of options"""
@@ -19,7 +20,7 @@ def voice():
 
     # Start our <Gather> verb
     with resp.gather(numDigits=1, action='/gather') as gather:
-        gather.say('If you would like Cozmo to turn right, press 1. If you would like Cozmo to turn left, press 2. If you would like cozmo to go forward, press 3. If you would like cozmo to go backward, press 4. If you would like Cozmo to stack, press 5. If you would like Cozmo to do a cute animation, press 6.')
+        gather.say('If you would like Cozmo to turn right, press 1. If you would like Cozmo to turn left, press 2. If you would like cozmo to go forward, press 3. If you would like cozmo to go backward, press 4. If you would like Cozmo to stack, press 5. If you would like Cozmo to do a cute animation, press 6. If you would like Cozmo to turn its lights, press 7.')
 
     # If the user doesn't select an option, redirect them into a loop
     resp.redirect('/voice')
@@ -63,6 +64,7 @@ def gather():
             turn_right.value = 6
         elif choice == '7':
             resp.say("You selected Cozmo's light.")
+            turn_right.value = 7
             
         else:
             # If the caller didn't choose 1 or 2, apologize and ask them again
@@ -114,7 +116,7 @@ def run_cozmo():
                 anim = robot.play_anim_trigger(cozmo.anim.Triggers.MajorWin)
                 anim.wait_for_completed()
                 turn_right.value = 0
-            if turn_right.value = 7:
+            if turn_right.value == 7:
                 robot.set_all_backpack_lights(cozmo.lights.green_light)
                 time.sleep(1)
                 robot.set_all_backpack_lights(cozmo.lights.red_light)
