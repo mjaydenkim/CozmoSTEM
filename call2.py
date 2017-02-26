@@ -48,19 +48,21 @@ def gather():
             turn_right.value = 2
             
         elif choice == '3':
-            resp.say('Cozmo will go forward at your command.')
+            resp.say('You selected forward.')
             turn_right.value = 3
             
         elif choice == '4':
-            resp.say("Backwards... Don't run into anything")
+            resp.say("You selected backward.")
             turn_right.value = 4
             
         elif choice == '5':
-            resp.say("Ooh... Cozmo's special ability.")
+            resp.say("You selected stack blocks.")
             turn_right.value = 5
         elif choice == '6':
-            resp.say("Prepare to be cutened.")
+            resp.say("You selected the best animation ever.")
             turn_right.value = 6
+        elif choice == '7':
+            resp.say("You selected Cozmo's light.")
             
         else:
             # If the caller didn't choose 1 or 2, apologize and ask them again
@@ -112,6 +114,18 @@ def run_cozmo():
                 anim = robot.play_anim_trigger(cozmo.anim.Triggers.MajorWin)
                 anim.wait_for_completed()
                 turn_right.value = 0
+            if turn_right.value = 7:
+                robot.set_all_backpack_lights(cozmo.lights.green_light)
+                time.sleep(1)
+                robot.set_all_backpack_lights(cozmo.lights.red_light)
+                time.sleep(1)
+                robot.set_all_backpack_lights(cozmo.lights.blue_light)
+                time.sleep(1)
+                robot.set_all_backpack_lights(cozmo.lights.white_light)
+                time.sleep(1)
+                robot.set_all_backpack_lights(cozmo.lights.off_light)
+                
+                
             
 
 
